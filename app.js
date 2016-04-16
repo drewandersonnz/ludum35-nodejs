@@ -1,9 +1,11 @@
 var express = require('express');
+var morgan = require('morgan');
 
 var web = require('./web');
 
 // Express cconfiguration
 var app = express();
+app.use(morgan(':date[iso] :remote-addr :method :url :status :res[content-length] :response-time ms'));
 app.use(express.static('public'));
 
 // Jade
