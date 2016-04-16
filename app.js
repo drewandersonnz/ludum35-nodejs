@@ -6,6 +6,7 @@ var web = require('./web');
 
 // Express cconfiguration
 var app = express();
+app.disable('x-powered-by'); // hide express to reduce security risk
 app.use(morgan(':date[iso] :remote-addr :method :url :status :res[content-length] :response-time ms'));
 app.use(bodyParser.json());         // to support JSON-encoded bodies
 app.use(bodyParser.urlencoded({     // to support URL-encoded bodies
