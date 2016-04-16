@@ -4,7 +4,7 @@ rooty('./');
 var express = require('express');
 
 var app = express();
-app.set('views', './views');
+app.set('views', './http_views');
 app.set('view engine', 'jade');
 
 app.get('/', function(request, response) {
