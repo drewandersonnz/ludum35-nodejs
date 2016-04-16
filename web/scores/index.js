@@ -41,6 +41,10 @@ router.post('/submit', function handleScore(request, response) {
         err = new Error("invalid score");
     }
 
+    if (typeof request.query.iat !== "undefined") {
+        err = new Error("invalid iat");
+    }
+
     if (err) {
         response.sendStatus(400);
         return;
