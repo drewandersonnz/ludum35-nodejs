@@ -33,7 +33,13 @@ router.get('/share/:token', function handleScore(request, response) {
 router.post('/submit', function handleScore(request, response) {
     var err = null;
 
-    // TODO: Error checking
+    if (typeof request.query.name !== "string") {
+        err = new Error("invalid name");
+    }
+
+    if (typeof request.query.score !== "string") {
+        err = new Error("invalid score");
+    }
 
     if (err) {
         response.sendStatus(400);
