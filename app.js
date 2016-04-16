@@ -1,5 +1,6 @@
 var express = require('express');
 
+var web = require('./web');
 
 // Express cconfiguration
 var app = express();
@@ -17,8 +18,6 @@ app.get('/health', function(request, response) {
 app.get('/', function(request, response) {
     response.render('index');
 });
-
-var web = require('./web');
 
 // Scores
 app.use('/scores', web.scores);
