@@ -1,4 +1,5 @@
 var express = require('express');
+var bodyParser = require('body-parser');
 var morgan = require('morgan');
 
 var web = require('./web');
@@ -6,6 +7,10 @@ var web = require('./web');
 // Express cconfiguration
 var app = express();
 app.use(morgan(':date[iso] :remote-addr :method :url :status :res[content-length] :response-time ms'));
+app.use(bodyParser.json());         // to support JSON-encoded bodies
+app.use(bodyParser.urlencoded({     // to support URL-encoded bodies
+    extended: true
+}));
 app.use(express.static('public'));
 
 // Jade
