@@ -9,6 +9,8 @@ html
         script(src='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js', crossorigin='anonymous', integrity='sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS')
         script(src='https://code.jquery.com/jquery-1.12.0.min.js', crossorigin='anonymous')
 
+        link(href='http://getbootstrap.com/examples/jumbotron-narrow/jumbotron-narrow.css', rel='stylesheet', crossorigin='anonymous')
+
         script.
             (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
             (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
@@ -21,8 +23,26 @@ html
 
     body
         div.container
+            div(class="header clearfix")
+                nav
+                    ul(class="nav nav-pills pull-right")
+                        li(role="presentation", class="active")
+                            a(href="#home") Home
+                        li(role="presentation")
+                            a(href="#download") Download
+                h3(class="text-muted") For the Glory!
+
             block content
                 div.jumbotron
                     h1 For the Glory!
 
                     p A Ludum Dare 35 game.
+
+            footer(class="footer")
+                ul(class="nav nav-pills pull-right")
+                    li(role="presentation")
+                        a(href="https://twitter.com/drewandersonnz") @drewandersonnz
+                    li(role="presentation")
+                        a(href="https://twitter.com/savagemickey") @savagemickey
+
+                p(class="text-muted") &copy; 2016
