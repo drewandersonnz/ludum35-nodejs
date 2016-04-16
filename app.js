@@ -4,6 +4,7 @@ var web = require('./web');
 
 // Express cconfiguration
 var app = express();
+app.use(express.static('public'));
 
 // Jade
 app.set('views', './web');
