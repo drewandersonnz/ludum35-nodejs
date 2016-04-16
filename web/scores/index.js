@@ -36,7 +36,7 @@ router.get('/share/:token', function handleScore(request, response) {
             shareHashtags: encodeURIComponent("ForTheGlory,LDJAM"),
             shareUrl: getShareUrl(token),
             shareUrlEncoded: encodeURIComponent(getShareUrl(token)),
-            shareMessageEncoded: encodeURIComponent("For The Glory! I passed " + textScore + " The challenge has been set!"),
+            shareMessageEncoded: encodeURIComponent("For The Glory! I passed " + textScore + ". The challenge has been set!"),
         });
     });
 });
