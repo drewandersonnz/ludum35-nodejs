@@ -3,20 +3,40 @@ var jwt = require('jsonwebtoken');
 
 var jwtPassword = "ludum35-aa950054-038f-11e6-a953-9f8fa3b1b12c";
 
+function getShareUrl(token) {
+    return "https://ludum35-onlycentral.rhcloud.com/scores/share/" + token;
+}
+
 router.get('/', function handleRoot(request, response) {
     response.render('scores/index');
 });
 
 router.get('/share/:token', function handleScore(request, response) {
-    jwt.verify(request.params.token, jwtPassword, function(err, decoded) {
+    var token = request.params.token;
+
+    jwt.verify(token, jwtPassword, function(err, decoded) {
         if (err) {
             response.status(404);
             response.render('scores/shareError');
             return;
         }
 
+        var textScore = Number(decoded.score).toFixed(0);
+        if (decoded.score === 1) {
+            textScore = decoded.score + " wall"
+        } else {
+            textScore = decoded.score + " walls"
+        }
+
         response.render('scores/shareSuccess', {
-            token: decoded,
+            token: token,
+            decoded: decoded,
+            name: decoded.name,
+            score: textScore,
+            shareHashtags: encodeURIComponent("ForTheGlory,LDJAM"),
+            shareUrl: getShareUrl(token),
+            shareUrlEncoded: encodeURIComponent(getShareUrl(token)),
+            shareMessageEncoded: encodeURIComponent("For The Glory! I passed " + textScore + " The challenge has been set!"),
         });
     });
 });
@@ -44,7 +64,7 @@ router.post('/submit', function handleScore(request, response) {
     var data = request.query;
 
     var token = jwt.sign(data, jwtPassword);
-    return response.send("https://ludum35-onlycentral.rhcloud.com/scores/share/" + token);
+    return response.send(getShareUrl(token));
 });
 
 module.exports = router;
