@@ -11,11 +11,7 @@ app.get('/health', function(request, response) {
 
 // Homepage
 app.get('/', function(request, response) {
-    response.render('index', {
-        raw: {
-            request: request,
-        },
-    });
+    response.render('index');
 });
 
 var web = require('./web');
