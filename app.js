@@ -1,6 +1,3 @@
-var rooty = require('rooty');
-rooty('./');
-
 var express = require('express');
 
 var app = express();

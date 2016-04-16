@@ -1,3 +1,6 @@
+var rooty = require('rooty');
+rooty('./');
+
 const cluster = require('cluster'),
       stopSignals = [
         'SIGHUP', 'SIGINT', 'SIGQUIT', 'SIGILL', 'SIGTRAP', 'SIGABRT',
