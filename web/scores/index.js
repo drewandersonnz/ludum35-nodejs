@@ -4,16 +4,7 @@ var jwt = require('jsonwebtoken');
 var jwtPassword = "ludum35-aa950054-038f-11e6-a953-9f8fa3b1b12c";
 
 router.get('/', function handleRoot(request, response) {
-    var data = {
-        score: 500,
-        name: "someone",
-    };
-
-    var token = jwt.sign(data, jwtPassword);
-
-    response.render('scores/index', {
-        token: token,
-    });
+    response.render('scores/index');
 });
 
 router.get('/share/:token', function handleScore(request, response) {
