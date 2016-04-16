@@ -30,22 +30,20 @@ router.get('/share/:token', function handleScore(request, response) {
     });
 });
 
-router.post('/submit/:score', function handleScore(request, response) {
-    var token = request.token;
+router.post('/submit', function handleScore(request, response) {
+    var err = null;
 
-    jwt.verify(request.params.token, jwtPassword, function(err, decoded) {
-        if (err) {
-            response.status(404);
-            response.render('scores/scoreError');
-            return;
-        }
+    // TODO: Error checking
 
-        response.render('scores/scoreSuccess', {
-            token: decoded,
-        });
-    });
+    if (err) {
+        response.sendStatus(400);
+        return;
+    }
+
+    var data = request.query;
+
+    var token = jwt.sign(data, jwtPassword);
+    return response.send("https://ludum35-onlycentral.rhcloud.com/scores/share/" + token);
 });
-
-
 
 module.exports = router;
