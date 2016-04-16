@@ -17,8 +17,6 @@ router.get('/', function handleRoot(request, response) {
 });
 
 router.get('/share/:token', function handleScore(request, response) {
-    var token = request.token;
-
     jwt.verify(request.params.token, jwtPassword, function(err, decoded) {
         if (err) {
             response.status(404);
