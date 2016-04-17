@@ -1,6 +1,8 @@
 var router = require('express').Router();
 var jwt = require('jsonwebtoken');
 
+var db = require.main.require('./db');
+
 var jwtPassword = "ludum35-aa950054-038f-11e6-a953-9f8fa3b1b12c";
 
 function getShareUrl(token) {
@@ -62,6 +64,14 @@ router.post('/submit', function handleScore(request, response) {
     }
 
     var data = request.query;
+
+    // Save to DB, don't worry if it doesn't work
+    db.Scores.build({
+        ip: request.headers['x-forwarded-for'] || request.connection.remoteAddress,
+        name: data.name,
+        score: Number(data.score),
+        payload: JSON.stringify(data),
+    }).save();
 
     var token = jwt.sign(data, jwtPassword);
     return response.send(getShareUrl(token));
