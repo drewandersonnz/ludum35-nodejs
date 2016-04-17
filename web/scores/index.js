@@ -10,7 +10,17 @@ function getShareUrl(token) {
 }
 
 router.get('/', function handleRoot(request, response) {
-    response.render('scores/index');
+    db.Scores.findAll({
+        attributes: ['name', 'score'],
+        order: [
+            ['score', 'DESC'],
+        ],
+        limit: 10,
+    }).then(function haveScores(scores) {
+        response.render('scores/index', {
+            scores: scores,
+        });
+    });
 });
 
 router.get('/share/:token', function handleScore(request, response) {

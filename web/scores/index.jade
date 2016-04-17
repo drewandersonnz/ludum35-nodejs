@@ -4,4 +4,11 @@ block title
     title='Scores - For the Glory! - Ludum Dare 35 "Shapeshift"'
 
 block content
-    p Scores
+    h1 Current High Scores Table
+
+    ol
+    each score in scores
+        li
+            = score.name
+            | :&nbsp;
+            = score.score
