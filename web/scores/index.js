@@ -15,7 +15,7 @@ router.get('/', function handleRoot(request, response) {
         order: [
             ['score', 'DESC'],
         ],
-        limit: 10,
+        limit: 250,
     }).then(function haveScores(scores) {
         response.render('scores/index', {
             scores: scores,
