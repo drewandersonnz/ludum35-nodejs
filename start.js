@@ -26,7 +26,7 @@ if (cluster.isMaster) {
     for (let i = 0; i < workerCount; i++) {
         setTimeout(function() {
             cluster.fork();
-        }, (1000 * i) + 500);
+        }, 1000 * (i + 1) );
     }
     if (production) {
         stopSignals.forEach(function (signal) {
