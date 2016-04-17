@@ -1,3 +1,5 @@
+var db = require.main.require('./db');
+db.Scores.sync();
 
 const cluster = require('cluster'),
       stopSignals = [
