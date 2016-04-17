@@ -32,6 +32,10 @@ var Scores = sequelize.define('Scores', {
             name: 'idx_timestamp',
             fields: ['timestamp',],
         },
+        {
+            name: 'idx_score',
+            fields: ['score',],
+        },
     ],
 });
 
