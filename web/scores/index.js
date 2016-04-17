@@ -11,13 +11,22 @@ function getShareUrl(token) {
 
 router.get('/', function handleRoot(request, response) {
     db.Scores.findAll({
-        attributes: ['name', 'score'],
+        attributes: [
+            'name',
+            'score',
+            [db.sequelize.fn('UNIX_TIMESTAMP', db.sequelize.col('timestamp')), 'timestamp'],
+            [db.sequelize.fn('date_format', db.sequelize.col('timestamp'), '%Y-%m-%d %H:%i:%s'), 'utc'],
+        ],
         order: [
             ['score', 'DESC'],
         ],
         limit: 250,
     }).then(function haveScores(scores) {
-        response.render('scores/index', {
+        if (request.query.format === "json") {
+            response.send(JSON.stringify(scores));
+        }
+
+        return response.render('scores/index', {
             scores: scores,
         });
     });
