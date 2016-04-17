@@ -43,7 +43,7 @@ router.get('/share/:token', function handleScore(request, response) {
         }
 
         var textScore = Number(decoded.score).toFixed(0);
-        if (decoded.score === 1) {
+        if (decoded.score == 1) {
             textScore = decoded.score + " wall"
         } else {
             textScore = decoded.score + " walls"
