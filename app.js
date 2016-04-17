@@ -2,7 +2,7 @@ var express = require('express');
 var bodyParser = require('body-parser');
 var morgan = require('morgan');
 
-var web = require('./web');
+var web = require.main.require('./web');
 
 // Express cconfiguration
 var app = express();
