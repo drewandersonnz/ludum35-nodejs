@@ -13,7 +13,8 @@ switch (os.hostname()) {
         break;
     default:
         config.mysql = {
-            hostname : process.env.OPENSHIFT_MYSQL_DB_HOST + ":" + process.env.OPENSHIFT_MYSQL_DB_PORT,
+            //hostname : process.env.OPENSHIFT_MYSQL_DB_HOST + ":" + process.env.OPENSHIFT_MYSQL_DB_PORT,
+            hostname : process.env.OPENSHIFT_MYSQL_DB_HOST,
             username : 'adminmZyaI7X',
             password : 'skATNL9-C9mf',
             database : 'ludum35',
