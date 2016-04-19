@@ -9,6 +9,8 @@ switch (os.hostname()) {
             username : 'root',
             password : '',
             database : 'ludum35',
+            timezone: 'utc',
+            //dateStrings: true,
         };
         break;
     default: // OPENSHIFT
@@ -17,6 +19,8 @@ switch (os.hostname()) {
             username : process.env.OPENSHIFT_MYSQL_DB_USERNAME,
             password : process.env.OPENSHIFT_MYSQL_DB_PASSWORD,
             database : 'ludum35',
+            timezone: 'utc',
+            //dateStrings: true,
         };
         break;
 }
