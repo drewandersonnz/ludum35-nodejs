@@ -11,6 +11,7 @@ A game for Ludum Dare 35.
 * Attempted to learn:
   * OpenShift applications on Red Hat Cloud
   * Node.js Jade template engine
+  * Node.js modules for MySQL and Sequelize
   * Node.js and OpenShift MySQL integration
   * Writing a website (not an API) in Node.js
 * Yes credentials are commited in this repo
